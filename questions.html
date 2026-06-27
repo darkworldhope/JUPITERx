@@ -46,6 +46,22 @@ style="width:100%;padding:12px;font-size:18px;margin:20px 0;border-radius:8px;">
 <div id="question-list"></div>
 
 <script src="js/questions.js"></script>
+  function searchQuestions(){
+
+let input = document.getElementById("search").value.toLowerCase();
+
+let questions = document.getElementsByClassName("question");
+
+for(let i=0;i<questions.length;i++){
+
+let text = questions[i].innerText.toLowerCase();
+
+questions[i].style.display =
+text.includes(input) ? "block" : "none";
+
+}
+
+}
 
 </body>
 </html>
