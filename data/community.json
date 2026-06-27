@@ -1,12 +1,12 @@
 [
-  {
-    "question": "Define Health. Explain dimensions of Health.",
-    "type": "Long Essay",
-    "answer": "health.jpg"
-  },
-  {
-    "question": "Explain Levels of Prevention with examples.",
-    "type": "Long Essay",
-    "answer": "prevention.jpg"
-  }
+  {"chapter":"Health","count":7},
+  {"chapter":"Epidemiology","count":8},
+  {"chapter":"Screening","count":5},
+  {"chapter":"Biostatistics","count":3},
+  {"chapter":"Demography","count":4},
+  {"chapter":"Nutrition","count":6},
+  {"chapter":"Immunization","count":9},
+  {"chapter":"MCH","count":8},
+  {"chapter":"Family Planning","count":5},
+  {"chapter":"National Health Programmes","count":10}
 ]
