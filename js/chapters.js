@@ -1,24 +1,24 @@
 fetch("data/chapters.json")
-.then(response => response.json())
-.then(data => {
+  .then(response => response.json())
+  .then(data => {
 
-let html = "";
+    let html = "";
 
-data.forEach(chapter => {
+    data.forEach(chapter => {
 
-html += `
-<div class="chapter"
-onclick="location.href='chapter.html?name=${chapter.chapter}'">
+      html += `
+      <div class="chapter"
+      onclick="location.href='chapter.html?name=${chapter.chapter}'">
 
-${chapter.chapter}
+      ${chapter.chapter}
 
-<span class="count">${chapter.count}</span>
+      <span class="count">${chapter.count}</span>
 
-</div>
-`;
+      </div>
+      `;
 
-});
+    });
 
-document.getElementById("chapter-list").innerHTML = html;
+    document.getElementById("chapter-list").innerHTML = html;
 
-});
+  });
