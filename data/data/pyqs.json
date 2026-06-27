@@ -1,0 +1,26 @@
+[
+  {
+    "chapter": "Health",
+    "year": 2025,
+    "session": "November",
+    "marks": 15,
+    "type": "Long Essay",
+    "question": "Define Health. Explain dimensions of Health."
+  },
+  {
+    "chapter": "Health",
+    "year": 2024,
+    "session": "May",
+    "marks": 10,
+    "type": "Short Essay",
+    "question": "Define Health."
+  },
+  {
+    "chapter": "Screening",
+    "year": 2025,
+    "session": "November",
+    "marks": 10,
+    "type": "Short Essay",
+    "question": "Write a note on Screening."
+  }
+]
