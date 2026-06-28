@@ -1,17 +1,14 @@
 const params = new URLSearchParams(window.location.search);
-const year = params.get("year");
+const year = Number(params.get("year"));
 
 const title = document.getElementById("title");
-const subjectsDiv = document.getElementById("subjects");
+const subjects = document.getElementById("subjects");
 
-const yearNames = {
-  "1": "1st MBBS",
-  "2": "2nd MBBS",
-  "3": "3rd MBBS",
-  "4": "Final MBBS"
-};
-
-title.innerText = yearNames[year] || "Subjects";
+title.innerText =
+year === 1 ? "1st MBBS" :
+year === 2 ? "2nd MBBS" :
+year === 3 ? "3rd MBBS" :
+"Final MBBS";
 
 loadSubjects();
 
@@ -20,20 +17,20 @@ async function loadSubjects() {
   const { data, error } = await window.supabaseClient
     .from("subjects")
     .select("*")
-    .eq("year_id", Number(year))
+    .eq("year_id", year)
     .order("name");
 
   if (error) {
-    subjectsDiv.innerHTML = "<h3>Error loading subjects</h3>";
     console.log(error);
+    subjects.innerHTML = "<h3>Error Loading Subjects</h3>";
     return;
   }
 
-  subjectsDiv.innerHTML = "";
+  subjects.innerHTML = "";
 
   data.forEach(subject => {
 
-    subjectsDiv.innerHTML += `
+    subjects.innerHTML += `
       <div class="card"
       onclick="location.href='papers.html?subject=${subject.id}'">
 
