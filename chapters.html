@@ -1,44 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Community Medicine Chapters</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MBBS Question Bank - Chapters</title>
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-font-family:Arial;
 background:#f5f5f5;
 padding:20px;
 }
 
 h1{
 text-align:center;
+margin-bottom:20px;
+}
+
+.back{
+display:inline-block;
+margin-bottom:20px;
+text-decoration:none;
+font-size:18px;
+color:#0d6efd;
 }
 
 .chapter{
 background:white;
-padding:15px;
-margin:10px 0;
-border-radius:8px;
-box-shadow:0 0 5px #ccc;
-font-size:18px;
+padding:18px;
+margin:12px 0;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,.12);
 cursor:pointer;
+font-size:18px;
+font-weight:bold;
+transition:.2s;
 }
+
+.chapter:hover{
+transform:scale(1.02);
+}
+
 .count{
 float:right;
-background:red;
+background:#0d6efd;
 color:white;
-padding:3px 10px;
+padding:4px 10px;
 border-radius:20px;
+font-size:14px;
 }
+
 </style>
 
 </head>
 
 <body>
 
-<h1>Community Medicine Chapters</h1>
-  <div id="chapter-list"></div>
+<a href="papers.html" class="back">⬅ Back</a>
+
+<h1 id="title">Chapters</h1>
+
+<div id="chapter-list"></div>
 
 <script src="js/chapters.js"></script>
 
