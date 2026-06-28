@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Papers</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+background:#f3f5f9;
+padding:20px;
+}
+
+h1{
+text-align:center;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:15px auto;
+max-width:500px;
+border-radius:15px;
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+cursor:pointer;
+font-size:22px;
+text-align:center;
+font-weight:bold;
+}
+
+a{
+text-decoration:none;
+font-size:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a href="subjects.html">⬅ Back</a>
+
+<h1 id="title">Papers</h1>
+
+<div id="papers"></div>
+
+<script>
+
+const params=new URLSearchParams(window.location.search);
+
+const subject=params.get("subject");
+
+const papers=document.getElementById("papers");
+
+if(subject=="community"){
+
+document.getElementById("title").innerHTML="Community Medicine";
+
+papers.innerHTML=`
+
+<div class="card"
+onclick="location.href='chapters.html?paper=1'">
+
+📄 Paper I
+
+</div>
+
+<div class="card"
+onclick="location.href='chapters.html?paper=2'">
+
+📄 Paper II
+
+</div>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
