@@ -4,82 +4,39 @@ const paper = params.get("paper");
 const title = document.getElementById("title");
 const chapterList = document.getElementById("chapter-list");
 
-if (paper === "1") {
+loadChapters();
 
-title.innerText = "Community Medicine - Paper I";
+async function loadChapters(){
 
-chapterList.innerHTML = `
+const {data,error}=await window.supabaseClient
+.from("chapters")
+.select("*")
+.eq("paper_id",Number(paper))
+.order("name");
 
-<div class="chapter" onclick="location.href='questions.html?chapter=man'">
-Man & Medicine
-</div>
-
-<div class="chapter" onclick="location.href='questions.html?chapter=concepts'">
-Concepts in Health & Disease
-</div>
-
-<div class="chapter" onclick="location.href='questions.html?chapter=epidemiology'">
-Principles & Methods of Epidemiology
-</div>
-
-<div class="chapter">
-Epidemiology of Communicable Diseases
-</div>
-
-<div class="chapter">
-Epidemiology of Non-Communicable Diseases
-</div>
-
-<div class="chapter">
-Screening for Disease
-</div>
-
-<div class="chapter">
-Demography & Family Planning
-</div>
-
-<div class="chapter">
-Nutrition & Health
-</div>
-
-<div class="chapter">
-Environmental Health
-</div>
-
-<div class="chapter">
-Occupational Health
-</div>
-
-<div class="chapter">
-Health Information & Medical Statistics
-</div>
-
-`;
-
+if(error){
+chapterList.innerHTML="<h3>Error loading chapters</h3>";
+console.log(error);
+return;
 }
 
-if (paper === "2") {
+title.innerHTML="Chapters";
 
-title.innerText = "Community Medicine - Paper II";
+chapterList.innerHTML="";
 
-chapterList.innerHTML = `
+data.forEach(chapter=>{
 
-<div class="chapter">
-Health Planning & Management
-</div>
+chapterList.innerHTML+=`
 
-<div class="chapter">
-Health Care of Community
-</div>
+<div class="chapter"
+onclick="location.href='questions.html?chapter=${chapter.id}'">
 
-<div class="chapter">
-MCH
-</div>
+${chapter.name}
 
-<div class="chapter">
-Medicine & Social Science
 </div>
 
 `;
+
+});
 
 }
