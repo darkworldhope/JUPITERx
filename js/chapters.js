@@ -1,42 +1,70 @@
-const params = new URLSearchParams(window.location.search);
-const paper = params.get("paper");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Question Types</title>
 
-const title = document.getElementById("title");
-const chapterList = document.getElementById("chapter-list");
-
-loadChapters();
-
-async function loadChapters(){
-
-const {data,error}=await window.supabaseClient
-.from("chapters")
-.select("*")
-.eq("paper_id",Number(paper))
-.order("name");
-
-if(error){
-chapterList.innerHTML="<h3>Error loading chapters</h3>";
-console.log(error);
-return;
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+padding:20px;
 }
 
-title.innerHTML="Chapters";
+h1{
+text-align:center;
+}
 
-chapterList.innerHTML="";
+.card{
+background:white;
+padding:20px;
+margin:15px auto;
+max-width:500px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+font-size:22px;
+font-weight:bold;
+text-align:center;
+cursor:pointer;
+}
 
-data.forEach(chapter=>{
+.back{
+text-decoration:none;
+font-size:18px;
+}
+</style>
 
-chapterList.innerHTML+=`
+</head>
 
-<div class="chapter"
-onclick="location.href='questions.html?chapter=${chapter.id}'">
+<body>
 
-${chapter.name}
+<a href="javascript:history.back()" class="back">⬅ Back</a>
 
+<h1>Question Types</h1>
+
+<div id="buttons"></div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const chapter = params.get("chapter");
+
+document.getElementById("buttons").innerHTML = `
+
+<div class="card"
+onclick="location.href='question-list.html?chapter=${chapter}&type=long'">
+📖 Long Questions
+</div>
+
+<div class="card"
+onclick="location.href='question-list.html?chapter=${chapter}&type=short'">
+📝 Short Notes
 </div>
 
 `;
 
-});
+</script>
 
-}
+</body>
+</html>
