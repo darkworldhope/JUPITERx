@@ -1,24 +1,85 @@
-fetch("data/chapters.json")
-  .then(response => response.json())
-  .then(data => {
+const params = new URLSearchParams(window.location.search);
+const paper = params.get("paper");
 
-    let html = "";
+const title = document.getElementById("title");
+const chapterList = document.getElementById("chapter-list");
 
-    data.forEach(chapter => {
+if (paper === "1") {
 
-      html += `
-      <div class="chapter"
-      onclick="location.href='chapter.html?name=${chapter.chapter}'">
+title.innerText = "Community Medicine - Paper I";
 
-      ${chapter.chapter}
+chapterList.innerHTML = `
 
-      <span class="count">${chapter.count}</span>
+<div class="chapter" onclick="location.href='questions.html?chapter=man'">
+Man & Medicine
+</div>
 
-      </div>
-      `;
+<div class="chapter" onclick="location.href='questions.html?chapter=concepts'">
+Concepts in Health & Disease
+</div>
 
-    });
+<div class="chapter" onclick="location.href='questions.html?chapter=epidemiology'">
+Principles & Methods of Epidemiology
+</div>
 
-    document.getElementById("chapter-list").innerHTML = html;
+<div class="chapter">
+Epidemiology of Communicable Diseases
+</div>
 
-  });
+<div class="chapter">
+Epidemiology of Non-Communicable Diseases
+</div>
+
+<div class="chapter">
+Screening for Disease
+</div>
+
+<div class="chapter">
+Demography & Family Planning
+</div>
+
+<div class="chapter">
+Nutrition & Health
+</div>
+
+<div class="chapter">
+Environmental Health
+</div>
+
+<div class="chapter">
+Occupational Health
+</div>
+
+<div class="chapter">
+Health Information & Medical Statistics
+</div>
+
+`;
+
+}
+
+if (paper === "2") {
+
+title.innerText = "Community Medicine - Paper II";
+
+chapterList.innerHTML = `
+
+<div class="chapter">
+Health Planning & Management
+</div>
+
+<div class="chapter">
+Health Care of Community
+</div>
+
+<div class="chapter">
+MCH
+</div>
+
+<div class="chapter">
+Medicine & Social Science
+</div>
+
+`;
+
+}
