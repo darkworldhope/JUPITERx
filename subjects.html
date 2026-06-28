@@ -57,58 +57,9 @@ font-size:18px;
 
 <div id="subjects"></div>
 
-<script>
-
-const params = new URLSearchParams(window.location.search);
-const year = params.get("year");
-
-const title=document.getElementById("title");
-const subjects=document.getElementById("subjects");
-
-if(year=="1"){
-title.innerHTML="1st MBBS";
-subjects.innerHTML=`
-<div class="card">Anatomy</div>
-<div class="card">Physiology</div>
-<div class="card">Biochemistry</div>
-`;
-}
-
-if(year=="2"){
-title.innerHTML="2nd MBBS";
-subjects.innerHTML=`
-<div class="card">Pathology</div>
-<div class="card">Pharmacology</div>
-<div class="card">Microbiology</div>
-`;
-}
-
-if(year=="3"){
-title.innerHTML="3rd MBBS";
-subjects.innerHTML=`
-<div class="card" onclick="location.href='papers.html?subject=community'">
-Community Medicine
-</div>
-
-<div class="card">
-Forensic Medicine
-</div>
-`;
-}
-
-if(year=="4"){
-title.innerHTML="Final MBBS";
-subjects.innerHTML=`
-<div class="card">General Medicine</div>
-<div class="card">General Surgery</div>
-<div class="card">OBG</div>
-<div class="card">Paediatrics</div>
-<div class="card">ENT</div>
-<div class="card">Ophthalmology</div>
-`;
-}
-
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/subjects.js"></script>
 
 </body>
 </html>
