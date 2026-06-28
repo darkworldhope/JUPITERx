@@ -1,27 +1,34 @@
 const btn = document.getElementById("addSubject");
+const result = document.getElementById("result");
 
 btn.addEventListener("click", async () => {
-  const name = document.getElementById("subject").value.trim();
-  const yearId = parseInt(document.getElementById("year").value);
 
-  if (!name) {
-    alert("Please enter subject name");
-    return;
-  }
+    const subject = document.getElementById("subject").value.trim();
+    const year = parseInt(document.getElementById("year").value);
 
-  const { error } = await window.supabaseClient
+    if(subject===""){
+        result.innerHTML="❌ Please enter subject name";
+        result.style.color="red";
+        return;
+    }
+
+    const { error } = await window.supabaseClient
     .from("subjects")
     .insert([
-      {
-        name: name,
-        year_id: yearId
-      }
+        {
+            name: subject,
+            year_id: year
+        }
     ]);
 
-  if (error) {
-    alert(error.message);
-  } else {
-    alert("Subject Added Successfully ✅");
-    document.getElementById("subject").value = "";
-  }
+    if(error){
+        result.innerHTML="❌ "+error.message;
+        result.style.color="red";
+    }
+    else{
+        result.innerHTML="✅ Subject Added Successfully";
+        result.style.color="green";
+        document.getElementById("subject").value="";
+    }
+
 });
