@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Subjects</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f3f5f9;
+padding:20px;
+}
+
+h1{
+text-align:center;
+margin:20px;
+}
+
+.card{
+background:white;
+padding:18px;
+margin:15px auto;
+max-width:500px;
+border-radius:15px;
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+cursor:pointer;
+font-size:20px;
+font-weight:bold;
+text-align:center;
+}
+
+.back{
+margin-bottom:20px;
+display:inline-block;
+text-decoration:none;
+font-size:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a href="index.html" class="back">⬅ Back</a>
+
+<h1 id="title">Subjects</h1>
+
+<div id="subjects"></div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const year = params.get("year");
+
+const title=document.getElementById("title");
+const subjects=document.getElementById("subjects");
+
+if(year=="1"){
+title.innerHTML="1st MBBS";
+subjects.innerHTML=`
+<div class="card">Anatomy</div>
+<div class="card">Physiology</div>
+<div class="card">Biochemistry</div>
+`;
+}
+
+if(year=="2"){
+title.innerHTML="2nd MBBS";
+subjects.innerHTML=`
+<div class="card">Pathology</div>
+<div class="card">Pharmacology</div>
+<div class="card">Microbiology</div>
+`;
+}
+
+if(year=="3"){
+title.innerHTML="3rd MBBS";
+subjects.innerHTML=`
+<div class="card" onclick="location.href='papers.html?subject=community'">
+Community Medicine
+</div>
+
+<div class="card">
+Forensic Medicine
+</div>
+`;
+}
+
+if(year=="4"){
+title.innerHTML="Final MBBS";
+subjects.innerHTML=`
+<div class="card">General Medicine</div>
+<div class="card">General Surgery</div>
+<div class="card">OBG</div>
+<div class="card">Paediatrics</div>
+<div class="card">ENT</div>
+<div class="card">Ophthalmology</div>
+`;
+}
+
+</script>
+
+</body>
+</html>
