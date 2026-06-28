@@ -48,39 +48,9 @@ font-size:18px;
 
 <div id="papers"></div>
 
-<script>
-
-const params=new URLSearchParams(window.location.search);
-
-const subject=params.get("subject");
-
-const papers=document.getElementById("papers");
-
-if(subject=="community"){
-
-document.getElementById("title").innerHTML="Community Medicine";
-
-papers.innerHTML=`
-
-<div class="card"
-onclick="location.href='chapters.html?paper=1'">
-
-📄 Paper I
-
-</div>
-
-<div class="card"
-onclick="location.href='chapters.html?paper=2'">
-
-📄 Paper II
-
-</div>
-
-`;
-
-}
-
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/papers.js"></script>
 
 </body>
 </html>
