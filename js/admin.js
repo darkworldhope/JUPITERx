@@ -32,3 +32,18 @@ btn.addEventListener("click", async () => {
     }
 
 });
+const uploadBtn = document.getElementById("uploadPdf");
+
+uploadBtn.addEventListener("click", () => {
+
+    const file = document.getElementById("pdfFile").files[0];
+
+    if (!file) {
+        document.getElementById("pdfResult").innerHTML = "❌ Please select a PDF";
+        return;
+    }
+
+    document.getElementById("pdfResult").innerHTML =
+        "✅ PDF Selected: " + file.name;
+
+});
