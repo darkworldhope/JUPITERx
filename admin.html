@@ -93,6 +93,22 @@ Add Subject
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase.js"></script>
 <script type="module" src="js/admin.js"></script>
+<h1>📚 MBBS Question Bank Admin</h1>
 
+<div class="card">
+  <h2>Upload PDF</h2>
+
+  <input type="file" id="pdfFile" accept=".pdf">
+
+  <br><br>
+
+  <button onclick="uploadPDF()">
+    Upload PDF
+  </button>
+
+  <p id="status"></p>
+</div>
+
+<script src="js/admin.js"></script>
 </body>
 </html>
