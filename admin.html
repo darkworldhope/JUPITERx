@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MBBS Question Bank - Admin</title>
 
 <style>
+
 body{
-    font-family:Arial,sans-serif;
-    background:#f4f4f4;
-    margin:0;
-    padding:20px;
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+margin:0;
+padding:20px;
 }
 
 h1{
-    text-align:center;
+text-align:center;
 }
 
 .card{
-    background:white;
-    padding:20px;
-    margin:15px auto;
-    border-radius:12px;
-    max-width:500px;
-    box-shadow:0 2px 10px rgba(0,0,0,.15);
-}
-
-h2{
-    margin-top:0;
+background:white;
+padding:20px;
+margin:20px auto;
+max-width:500px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
 }
 
 input,select{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    font-size:16px;
-    box-sizing:border-box;
+width:100%;
+padding:12px;
+margin:10px 0;
+font-size:16px;
+box-sizing:border-box;
 }
 
 button{
-    width:100%;
-    padding:15px;
-    margin-top:10px;
-    font-size:18px;
-    cursor:pointer;
-    background:#0d6efd;
-    color:white;
-    border:none;
-    border-radius:8px;
+width:100%;
+padding:14px;
+font-size:18px;
+background:#0d6efd;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin-top:10px;
 }
 
 button:hover{
-    background:#0b5ed7;
+background:#0b5ed7;
 }
 
-#result{
-    margin-top:15px;
-    font-weight:bold;
+#result,#status{
+margin-top:15px;
+font-weight:bold;
 }
+
 </style>
 
 </head>
 
 <body>
 
-<h1>MBBS Question Bank</h1>
+<h1>MBBS Question Bank Admin</h1>
 
 <div class="card">
 
@@ -90,25 +90,33 @@ Add Subject
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase.js"></script>
-<script type="module" src="js/admin.js"></script>
-<h1>📚 MBBS Question Bank Admin</h1>
 
 <div class="card">
-  <h2>Upload PDF</h2>
 
-  <input type="file" id="pdfFile" accept=".pdf">
+<h2>Import PDF</h2>
 
-  <br><br>
+<input
+type="file"
+id="pdfFile"
+accept=".pdf">
 
-  <button onclick="uploadPDF()">
-    Upload PDF
-  </button>
+<button id="importPdf">
+Import PDF
+</button>
 
-  <p id="status"></p>
+<div id="status"></div>
+
 </div>
 
-<script src="js/admin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script src="js/supabase.js"></script>
+
+<script type="module" src="js/admin.js"></script>
+
+<script src="js/pdf-import.js"></script>
+
 </body>
 </html>
