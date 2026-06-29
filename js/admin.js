@@ -47,3 +47,32 @@ uploadBtn.addEventListener("click", () => {
         "✅ PDF Selected: " + file.name;
 
 });
+const uploadBtn = document.getElementById("uploadPdf");
+
+uploadBtn.addEventListener("click", async () => {
+
+    const file = document.getElementById("pdfFile").files[0];
+
+    if (!file) {
+        pdfResult.innerHTML = "❌ Please select a PDF";
+        return;
+    }
+
+    pdfResult.innerHTML = "Uploading...";
+
+    const fileName = Date.now() + "_" + file.name;
+
+    const { data, error } = await window.supabaseClient
+        .storage
+        .from("pdfs")
+        .upload(fileName, file);
+
+    if (error) {
+        pdfResult.innerHTML = "❌ " + error.message;
+        return;
+    }
+
+    pdfResult.innerHTML = "✅ PDF Uploaded Successfully";
+    console.log(data);
+
+});
