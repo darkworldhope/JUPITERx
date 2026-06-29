@@ -22,7 +22,7 @@ btn.addEventListener("click", async () => {
     ]);
 
     if(error){
-        result.innerHTML="❌ "+error.message;
+        result.innerHTML="❌ " + error.message;
         result.style.color="red";
     }
     else{
@@ -32,47 +32,44 @@ btn.addEventListener("click", async () => {
     }
 
 });
+
+
+// ======================
+// PDF Upload
+// ======================
+
 const uploadBtn = document.getElementById("uploadPdf");
-
-uploadBtn.addEventListener("click", () => {
-
-    const file = document.getElementById("pdfFile").files[0];
-
-    if (!file) {
-        document.getElementById("pdfResult").innerHTML = "❌ Please select a PDF";
-        return;
-    }
-
-    document.getElementById("pdfResult").innerHTML =
-        "✅ PDF Selected: " + file.name;
-
-});
-const uploadBtn = document.getElementById("uploadPdf");
+const pdfResult = document.getElementById("pdfResult");
 
 uploadBtn.addEventListener("click", async () => {
 
     const file = document.getElementById("pdfFile").files[0];
 
-    if (!file) {
-        pdfResult.innerHTML = "❌ Please select a PDF";
+    if(!file){
+        pdfResult.innerHTML="❌ Please select a PDF";
+        pdfResult.style.color="red";
         return;
     }
 
-    pdfResult.innerHTML = "Uploading...";
+    pdfResult.innerHTML="Uploading PDF...";
+    pdfResult.style.color="black";
 
     const fileName = Date.now() + "_" + file.name;
 
-    const { data, error } = await window.supabaseClient
-        .storage
-        .from("pdfs")
-        .upload(fileName, file);
+    const { error } = await window.supabaseClient
+    .storage
+    .from("pdfs")
+    .upload(fileName, file);
 
-    if (error) {
-        pdfResult.innerHTML = "❌ " + error.message;
+    if(error){
+        pdfResult.innerHTML="❌ " + error.message;
+        pdfResult.style.color="red";
         return;
     }
 
-    pdfResult.innerHTML = "✅ PDF Uploaded Successfully";
-    console.log(data);
+    pdfResult.innerHTML="✅ PDF Uploaded Successfully";
+    pdfResult.style.color="green";
+
+    console.log("PDF Uploaded:", fileName);
 
 });
